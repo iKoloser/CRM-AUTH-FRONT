@@ -21,8 +21,17 @@ export class RegisterComponent {
     password: new FormControl('', [Validators.required])
   });
 
-  onSubmit() {
-    this.authService.register(this.formgroup.value.email, this.formgroup.value.password)
+  submitUser() {
+    if (this.formgroup.valid) {
+      this.authService.register(this.formgroup.value).subscribe(
+        response => {
+          if (response.accessToken) {
+            localStorage.setItem('token', response.accessToken)
+          
+          }          
+}
+      );
+    }
   }
 
 }

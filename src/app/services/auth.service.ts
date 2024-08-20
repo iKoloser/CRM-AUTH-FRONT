@@ -25,9 +25,9 @@ export class AuthService {
   }
 
 
-  register(email: string, password: string) {
-    console.log(email, password);
-    return this.http.post<any>(`${this.apiUrl}/register`, { email, password });
+  register(data: user) {
+
+    return this.http.post<any>(`${this.apiUrl}/register`, data);
   }
 
   logout() {
